@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import HelloWorld from "./components/HelloWorld.vue";
-import Button from "./components/Button.vue";
 import Sidebar from "./components/Sidebar.vue";
 import Messages from "./components/Messages.vue";
 import Channels from "./components/Channels.vue";
