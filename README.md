@@ -1,6 +1,6 @@
 # Discord UI recreated with Vue & TailwindCSS
-[DEMO](https://shivero.github.io/tailwind-vue-vite/)
 
+[DEMO](https://shivero.github.io/discord-ui-tailwind-vue-vite/)
 
 # Vue 3 + TypeScript + Vite
 
