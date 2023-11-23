@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'GG Sans';
+    font-weight: normal;
+    src: url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap') format('woff');
+}
+
+@font-face {
+    font-family: 'GG Sans';
+    font-weight: 600;
+    src: url('src/assets/gg sans/gg_sans_Semibold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'GG Sans';
+    font-weight: bold;
+    src: url('src/assets/gg sans/gg_sans_Bold.woff') format('woff');
+}

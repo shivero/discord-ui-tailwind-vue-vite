@@ -25,17 +25,18 @@ const hoverIndicatorClass = `before:opacity-0 hover:before:opacity-100 before:co
     <div class="flex flex-col items-center gap-4 py-4">
       <div
         v-for="(image, index) in imagesList"
-        :class="[image.active ? activeIndicatorClass : '', image.active ? '' : hoverIndicatorClass]"
+        :class="[
+          image.active ? activeIndicatorClass : '',
+          image.active ? '' : hoverIndicatorClass,
+        ]"
         class="before:transition-property-transform before:transition-property-opacity relative before:duration-300"
-        @click="setActiveImage(index)"
-      >
+        @click="setActiveImage(index)">
         <div class="px-4">
           <img
             class="duration-50 h-[64px] w-[64px] rounded-2xl outline-lime-200 duration-300 hover:rounded-3xl"
             :class="image.active ? '' : 'rounded-5xl'"
             :src="image.url"
-            alt=""
-          />
+            alt="" />
         </div>
       </div>
     </div>
