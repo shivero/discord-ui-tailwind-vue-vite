@@ -1,9 +1,22 @@
 <script setup lang="ts">
-defineProps({ size: Number });
+const props = defineProps({ size: Number });
+let hSize = `h-${props.size}`;
+let wSize = `w-${props.size}`;
+let sizeClass = `${hSize} ${wSize}`;
+switch (props.size) {
+  case 4:
+    sizeClass = "h-4 w-4";
+    break;
+  case 11:
+    sizeClass = "h-11 w-11";
+    break;
+  default:
+    break;
+}
 </script>
 
 <template>
-  <div :class="`h-${size} w-${size}`" class="rounded-full bg-slate-800">
-    <img src="" />
+  <div :class="sizeClass" class="shrink-0 rounded-full bg-gray-600">
+    <!-- <img src="" /> -->
   </div>
 </template>

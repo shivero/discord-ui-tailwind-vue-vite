@@ -18,7 +18,12 @@ const messages: Array<Message> = [
     timestamp: "2023-11-20T12:05:00Z",
     message: "Hey, has anyone tried the new VR headset from Sony?",
   },
-  { user: "User2", type: "", timestamp: "2023-11-21T12:08:00Z", message: "Yeah, I got it last week. It's impressive." },
+  {
+    user: "User2",
+    type: "",
+    timestamp: "2023-11-21T12:08:00Z",
+    message: "Yeah, I got it last week. It's impressive.",
+  },
   {
     user: "User3",
     type: "",
@@ -53,7 +58,8 @@ const messages: Array<Message> = [
     user: "User4",
     type: "",
     timestamp: "2023-11-21T12:25:00Z",
-    message: "Personally, I find the wireless feature of the Oculus Quest 2 a game-changer.",
+    message:
+      "Personally, I find the wireless feature of the Oculus Quest 2 a game-changer.",
   },
   {
     user: "User1",
@@ -71,7 +77,8 @@ const messages: Array<Message> = [
     user: "User3",
     type: "",
     timestamp: "2023-11-21T14:05:00Z",
-    message: "Consider the Pimax 8KX for its unparalleled resolution if you're a graphics enthusiast.",
+    message:
+      "Consider the Pimax 8KX for its unparalleled resolution if you're a graphics enthusiast.",
   },
   {
     user: "User4",
@@ -89,7 +96,8 @@ const messages: Array<Message> = [
     user: "User2",
     type: "",
     timestamp: "2023-11-21T15:05:00Z",
-    message: "Rumors about haptic feedback suits for full-body immersion are circulating.",
+    message:
+      "Rumors about haptic feedback suits for full-body immersion are circulating.",
   },
   {
     user: "User3",
@@ -98,10 +106,12 @@ const messages: Array<Message> = [
       user: "User2",
       type: "",
       timestamp: "2023-11-21T15:05:00Z",
-      message: "Rumors about haptic feedback suits for full-body immersion are circulating.",
+      message:
+        "Rumors about haptic feedback suits for full-body immersion are circulating.",
     },
     timestamp: "2023-11-21T15:25:00Z",
-    message: "I've heard about neural interfaces in development for more direct interaction.",
+    message:
+      "I've heard about neural interfaces in development for more direct interaction.",
   },
   {
     user: "User4",
@@ -125,13 +135,15 @@ const messages: Array<Message> = [
     user: "User3",
     type: "",
     timestamp: "2023-11-21T15:31:00Z",
-    message: "Agreed. The convergence of tech and gaming is opening up incredible possibilities.",
+    message:
+      "Agreed. The convergence of tech and gaming is opening up incredible possibilities.",
   },
   {
     user: "User4",
     type: "",
     timestamp: "2023-11-21T15:33:00Z",
-    message: "And it's not just gaming; VR is making waves in education and healthcare too.",
+    message:
+      "And it's not just gaming; VR is making waves in education and healthcare too.",
   },
   {
     user: "User1",
@@ -144,21 +156,27 @@ const messages: Array<Message> = [
 
 <template>
   <div class="bg-discord-dark">
-    <div class="h-[80%] overflow-y-scroll">
+    <div class="flex h-[80%] flex-col gap-6 overflow-y-scroll">
       <div v-for="msg in messages">
         <div class="flex gap-4 px-4 py-2 hover:bg-discord-dark-2" v-if="msg.type === ''">
           <Avatar :size="11" />
           <div class="message text-slate-300">
-            <User :username="msg.user" :timestamp="msg.timestamp" :isreply="msg.type === ''" />
+            <User
+              :username="msg.user"
+              :timestamp="msg.timestamp"
+              :isreply="msg.type === ''" />
             {{ msg.message }}
           </div>
         </div>
-        <div class="bg-yellow-600 bg-opacity-20 px-4 py-2" v-else-if="msg.type === 'reply'">
+        <div
+          class="border-l-2 border-yellow-600 bg-yellow-600 bg-opacity-20 px-4 py-2"
+          v-else-if="msg.type === 'reply'">
           <div v-if="msg.replyTo" class="">
             <div class="flex items-center gap-2 px-16 pb-2">
               <Avatar :size="4" />
               <User :username="msg.replyTo.user" />
-              <div class="w-80 overflow-x-hidden overflow-y-clip overflow-ellipsis whitespace-nowrap text-slate-400">
+              <div
+                class="w-80 overflow-x-hidden overflow-y-clip overflow-ellipsis whitespace-nowrap text-slate-400">
                 {{ msg.replyTo.message }}
               </div>
             </div>

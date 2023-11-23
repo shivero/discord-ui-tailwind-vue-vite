@@ -3,6 +3,7 @@ import HelloWorld from "./components/HelloWorld.vue";
 import Button from "./components/Button.vue";
 import Sidebar from "./components/Sidebar.vue";
 import Messages from "./components/Messages.vue";
+import Channels from "./components/Channels.vue";
 </script>
 
 <template>
@@ -10,11 +11,11 @@ import Messages from "./components/Messages.vue";
     <div class="container mx-auto">
       <div class="grid grid-cols-[auto_auto_1fr]">
         <Sidebar />
-        <div class="bg-discord-dark-1 w-64"></div>
+        <Channels />
         <Messages />
       </div>
-      <HelloWorld msg="Vite + Vue" />
-      <Button />
+      <!-- <HelloWorld msg="Vite + Vue" /> -->
+      <!-- <Button /> -->
     </div>
   </div>
 </template>
