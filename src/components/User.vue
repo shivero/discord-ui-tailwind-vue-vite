@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { formatRelative } from "date-fns";
+import formatRelative from "date-fns/formatRelative";
 
 defineProps(["username", "isreply", "timestamp"]);
 
@@ -13,13 +13,19 @@ const setUserColor = (username: string) => {
       return "#3498db";
     case "User4":
       return "#e74c3c";
+    case "User5":
+      return "#e12345";
   }
 };
 </script>
 
 <template>
-  <div class="font-semibold leading-none text-slate-500" :style="{ color: setUserColor(username) }">
+  <div
+    class="font-semibold leading-none text-slate-500"
+    :style="{ color: setUserColor(username) }">
     {{ username }}
-    <span class="text-sm text-gray-400" v-if="isreply">{{ formatRelative(new Date(timestamp), new Date()) }}</span>
+    <span class="text-sm font-normal text-gray-400" v-if="isreply">{{
+      formatRelative(new Date(timestamp), new Date())
+    }}</span>
   </div>
 </template>

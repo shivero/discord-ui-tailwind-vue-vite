@@ -19,3 +19,28 @@
     font-weight: bold;
     src: url('src/assets/gg sans/gg_sans_Bold.woff') format('woff');
 }
+
+
+@layer utilities {
+    .scrollbar::-webkit-scrollbar {
+        width: 8px;
+        height: 20px;
+        padding-right: 4rem;
+        transform: translateX(-20px);
+    }
+
+    .scrollbar::-webkit-scrollbar-track {
+        border-radius: 100vh;
+        background: hsl(220, 13%, 28%);
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb {
+        background: hsl(220, 13%, 14%);
+        border-radius: 100vh;
+        /* border: 3px solid var(--tw-discord-dark-2); */
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #c0a0b9;
+    }
+}
