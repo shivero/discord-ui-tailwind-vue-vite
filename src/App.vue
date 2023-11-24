@@ -5,9 +5,9 @@ import Channels from "./components/Channels.vue";
 </script>
 
 <template>
-  <div class="bg-discord-dark-4">
-    <div class="container mx-auto">
-      <div class="grid grid-cols-[auto_auto_1fr]">
+  <div class="h-screen bg-discord-dark-4">
+    <div class="relative h-full w-full">
+      <div class="grid h-full grid-cols-[auto_auto_1fr] overflow-hidden">
         <Sidebar />
         <Channels />
         <Messages />

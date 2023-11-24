@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { ref } from "vue";
+import type { Ref } from "vue";
 import User from "./User.vue";
 import Avatar from "./Avatar.vue";
-const t: number = 5;
-console.log(t);
+import { useChannelStore } from "@/store/channelStore";
 
 interface Message {
   user: string;
@@ -11,7 +12,10 @@ interface Message {
   message: string;
   replyTo?: Message;
 }
-const messages: Array<Message> = [
+
+const channelStore = useChannelStore();
+
+let messages: Array<Message> = [
   {
     user: "User1",
     type: "",
@@ -152,12 +156,107 @@ const messages: Array<Message> = [
     message: "Fascinating. I'll stay updated on these developments. Thanks, everyone!",
   },
 ];
+let infoMessages: Array<Message> = [
+  {
+    user: "Admin1",
+    type: "",
+    timestamp: "2023-11-22T09:00:00Z",
+    message: "New channel rules: Be respectful and on-topic. Report any issues to mods.",
+  },
+  {
+    user: "Mod2",
+    type: "",
+    timestamp: "2023-11-22T09:30:00Z",
+    message: "Reminder: Group event tomorrow at 7 PM. Don't miss out!",
+  },
+  {
+    user: "User5",
+    type: "",
+    timestamp: "2023-11-22T10:05:00Z",
+    message: "Any recommendations for productivity tools? I need something efficient.",
+  },
+  {
+    user: "User6",
+    type: "reply",
+    replyTo: {
+      user: "User5",
+      type: "",
+      timestamp: "2023-11-22T10:05:00Z",
+      message: "Any recommendations for productivity tools? I need something efficient.",
+    },
+    timestamp: "2023-11-22T10:15:00Z",
+    message: "Try Notion. It's versatile and great for collaborative work.",
+  },
+  {
+    user: "User7",
+    type: "",
+    replyTo: {
+      user: "User6",
+      type: "reply",
+      timestamp: "2023-11-22T10:15:00Z",
+      message: "Try Notion. It's versatile and great for collaborative work.",
+    },
+    timestamp: "2023-11-22T10:30:00Z",
+    message: "I prefer Trello for its simplicity in task management.",
+  },
+  {
+    user: "User5",
+    type: "",
+    timestamp: "2023-11-22T11:00:00Z",
+    message: "Thanks for the suggestions. Any upcoming group events?",
+  },
+  {
+    user: "Mod2",
+    type: "",
+    timestamp: "2023-11-22T11:05:00Z",
+    message: "Group meetup next week. Details to be shared soon. Stay tuned!",
+  },
+  {
+    user: "Admin1",
+    type: "",
+    timestamp: "2023-11-22T11:10:00Z",
+    message: "Reminder: Use appropriate channels for discussions. Keep it organized.",
+  },
+  {
+    user: "User6",
+    type: "",
+    timestamp: "2023-11-22T11:20:00Z",
+    message: "Looking for podcast recommendations. Any genre is fine!",
+  },
+  {
+    user: "User7",
+    type: "reply",
+    replyTo: {
+      user: "User6",
+      type: "",
+      timestamp: "2023-11-22T11:20:00Z",
+      message: "Looking for podcast recommendations. Any genre is fine!",
+    },
+    timestamp: "2023-11-22T11:30:00Z",
+    message: "Check out 'The Daily' for current affairs. It's concise and informative.",
+  },
+  {
+    user: "Mod2",
+    type: "",
+    timestamp: "2023-11-22T11:35:00Z",
+    message: "Remember, off-topic discussions can be taken to the designated channel.",
+  },
+];
+let conversation: Ref<Array<Message>> = ref([]);
+channelStore.$subscribe((_, store) => {
+  if (store.channelName == "information") {
+    conversation.value = infoMessages;
+  } else {
+    conversation.value = messages;
+  }
+});
 </script>
 
 <template>
-  <div class="bg-discord-dark">
-    <div class="flex h-[80%] flex-col gap-6 overflow-y-scroll">
-      <div v-for="msg in messages">
+  <div class="h-full bg-discord-dark pr-1">
+    <div class="scrollbar flex h-screen flex-col justify-start gap-6 overflow-y-scroll">
+      {{ channelStore.channelName }}
+      <div v-for="msg in conversation" :key="msg.message + msg.user">
         <div class="flex gap-4 px-4 py-2 hover:bg-discord-dark-2" v-if="msg.type === ''">
           <Avatar :size="11" />
           <div class="message text-slate-300">

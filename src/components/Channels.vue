@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { groupBy } from "../utils/groupBy";
-
+import { useChannelStore } from "@/store/channelStore";
 import { IChannel } from "./IChannel";
-import Channel from "./Channel.vue";
+import Channel from "@/components/Channel.vue";
 import ArrowDown from "./Icons/ArrowDown.vue";
 const channels: Array<IChannel> = [
   { name: "information", group: "information", type: "text", unread: false },
@@ -47,6 +47,7 @@ const channels: Array<IChannel> = [
   { name: "bot-commands", group: "bots", type: "text", unread: false },
 ];
 
+const channelStore = useChannelStore();
 const groupsOpen = true;
 let groupedChannels = groupBy(channels, "group");
 </script>
@@ -67,7 +68,7 @@ let groupedChannels = groupBy(channels, "group");
         </DisclosureButton>
         <DisclosurePanel class="flex flex-col gap-[2px] text-gray-500">
           <div v-for="channel in group">
-            <Channel :channel="channel" />
+            <Channel :channel="channel" @click="channelStore.setChannel(channel.name)" />
           </div>
         </DisclosurePanel>
       </Disclosure>
