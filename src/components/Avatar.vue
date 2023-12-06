@@ -16,7 +16,9 @@ switch (props.size) {
 </script>
 
 <template>
-  <div :class="sizeClass" class="shrink-0 rounded-full bg-gray-600">
+  <div
+    :class="sizeClass"
+    class="ml-1 shrink-0 rounded-full border-2 border-transparent bg-gray-600">
     <!-- <img src="" /> -->
   </div>
 </template>

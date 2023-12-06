@@ -5,6 +5,7 @@ import { useChannelStore } from "@/store/channelStore";
 import { IChannel } from "./IChannel";
 import Channel from "@/components/Channel.vue";
 import ArrowDown from "./Icons/ArrowDown.vue";
+import ServerHeader from "./Serverheader.vue";
 const channels: Array<IChannel> = [
   { name: "information", group: "information", type: "text", unread: false },
   { name: "📢announcements", group: "information", type: "text", unread: false },
@@ -53,7 +54,8 @@ let groupedChannels = groupBy(channels, "group");
 </script>
 
 <template>
-  <div class="bg-discord-dark-1 w-60">
+  <div class="w-60 rounded-tl-xl bg-discord-dark-4">
+    <ServerHeader />
     <div v-for="(group, index) in groupedChannels">
       <Disclosure as="div" :default-open="groupsOpen" v-slot="{ open }">
         <DisclosureButton
