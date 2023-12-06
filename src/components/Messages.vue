@@ -10,6 +10,8 @@ interface Message {
   type: string;
   timestamp: string;
   message: string;
+  image?: boolean;
+  image_url?: string;
   replyTo?: Message;
 }
 
@@ -76,6 +78,8 @@ let messages: Array<Message> = [
     type: "",
     timestamp: "2023-11-21T13:05:00Z",
     message: "Quest 2 has a growing library. Many popular titles are available.",
+    image: true,
+    image_url: "https://picsum.photos/4200/2300",
   },
   {
     user: "User3",
@@ -250,14 +254,30 @@ channelStore.$subscribe((_, store) => {
     conversation.value = messages;
   }
 });
+
+const highlightStyle = "border-l-2 border-yellow-600 bg-yellow-600 bg-opacity-20";
 </script>
 
 <template>
   <div class="h-full bg-discord-dark pr-1">
     <div class="scrollbar flex h-screen flex-col justify-start gap-6 overflow-y-scroll">
       {{ channelStore.channelName }}
-      <div v-for="msg in conversation" :key="msg.message + msg.user">
-        <div class="flex gap-4 px-4 py-2 hover:bg-discord-dark-2" v-if="msg.type === ''">
+      <div
+        v-for="msg in conversation"
+        :key="msg.message + msg.user"
+        :data-type="msg.type"
+        :class="msg.type === 'reply' ? highlightStyle : 'hover:bg-discord-dark-2'">
+        <div v-if="msg.replyTo" class="relative flex items-center gap-2 px-20">
+          <div
+            class="absolute h-2 w-10 -translate-x-full translate-y-0.5 border-l-2 border-t-2 border-slate-500"></div>
+          <Avatar :size="4" />
+          <User :username="msg.replyTo.user" />
+          <div
+            class="w-80 overflow-x-hidden overflow-y-clip overflow-ellipsis whitespace-nowrap text-slate-400">
+            {{ msg.replyTo.message }}
+          </div>
+        </div>
+        <div class="flex gap-4 px-4 py-2">
           <Avatar :size="11" />
           <div class="message text-slate-300">
             <User
@@ -265,26 +285,13 @@ channelStore.$subscribe((_, store) => {
               :timestamp="msg.timestamp"
               :isreply="msg.type === ''" />
             {{ msg.message }}
-          </div>
-        </div>
-        <div
-          class="border-l-2 border-yellow-600 bg-yellow-600 bg-opacity-20 px-4 py-2"
-          v-else-if="msg.type === 'reply'">
-          <div v-if="msg.replyTo" class="">
-            <div class="flex items-center gap-2 px-16 pb-2">
-              <Avatar :size="4" />
-              <User :username="msg.replyTo.user" />
-              <div
-                class="w-80 overflow-x-hidden overflow-y-clip overflow-ellipsis whitespace-nowrap text-slate-400">
-                {{ msg.replyTo.message }}
-              </div>
-            </div>
-          </div>
-          <div class="flex gap-4">
-            <Avatar :size="11" />
-            <div class="message text-slate-300">
-              <User :username="msg.user" :timestamp="msg.timestamp" :isreply="false" />
-              {{ msg.message }}
+            <div
+              v-if="msg.image"
+              class="mt-2 box-border max-h-72 max-w-md justify-center overflow-hidden rounded-lg">
+              <img
+                :src="msg.image_url"
+                class="max-h-72 max-w-md object-contain"
+                :alt="msg.image_url" />
             </div>
           </div>
         </div>
