@@ -21,7 +21,7 @@ withDefaults(
   defineProps<{
     intent: SpanProps["intent"];
     size: SpanProps["size"];
-    tooltipText: String;
+    tooltipText: string;
   }>(),
   {
     intent: "primary",
