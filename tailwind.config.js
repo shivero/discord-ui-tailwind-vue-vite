@@ -18,12 +18,16 @@ export default {
         'discord-dark-3': '#202225',
         'discord-dark-4': '#292B2F',
         'discord-dark-hover': '#4F545C',
-        'discord-blue': '#7289DA',
+        'discord-blue': '#4e59d6',
+        'discord-blue-hover': '#4752c4',
       },
       borderRadius: {
         '5xl': '50px'
-      }
-    },
+      },
+      boxShadow: {
+        'slight-bottom': '0 1px 0 0 rgba(0,0,0,0.24)',
+     } 
+        },
   },
   plugins: [],
 }
