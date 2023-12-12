@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import formatRelative from "date-fns/formatRelative";
+import formatRelative from 'date-fns/formatRelative';
 
 defineProps(["username", "isreply", "timestamp"]);
 

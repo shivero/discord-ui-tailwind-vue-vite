@@ -1,9 +1,20 @@
-<script setup lang="ts"></script>
-
 <template>
-  <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    height="1em"
+    width="1em"
+    :viewBox="viewBox">
     <path
-      d="m240-160 40-160H120l20-80h160l40-160H180l20-80h160l40-160h80l-40 160h160l40-160h80l-40 160h160l-20 80H660l-40 160h160l-20 80H600l-40 160h-80l40-160H360l-40 160h-80Zm140-240h160l40-160H420l-40 160Z"
-    />
+      d="m6 20l1-4H3l.5-2h4l1-4h-4L5 8h4l1-4h2l-1 4h4l1-4h2l-1 4h4l-.5 2h-4l-1 4h4l-.5 2h-4l-1 4h-2l1-4H9l-1 4H6Zm3.5-6h4l1-4h-4l-1 4Z"></path>
   </svg>
 </template>
+
+<script setup lang="ts">
+import { computed } from 'vue';
+
+const props = defineProps({
+  size: { type: Number, default: 24 },
+});
+
+const viewBox = computed(() => `0 0 ${props.size} ${props.size}`);
+</script>
