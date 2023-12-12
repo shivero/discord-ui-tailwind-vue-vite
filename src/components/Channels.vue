@@ -70,7 +70,7 @@ let groupedChannels = groupBy(channels, "group");
         </DisclosureButton>
         <DisclosurePanel class="flex flex-col gap-[2px] text-gray-500">
           <div v-for="channel in group">
-            <Channel :channel="channel" @click="channelStore.setChannel(channel.name)" />
+            <Channel :channel="channel" @click="channelStore.setChannel({...channel})" />
           </div>
         </DisclosurePanel>
       </Disclosure>

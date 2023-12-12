@@ -3,6 +3,7 @@ import Sidebar from "./components/Sidebar.vue";
 import Messages from "./components/Messages.vue";
 import Channels from "./components/Channels.vue";
 import AppHeader from "./components/AppHeader.vue";
+import ChannelHeader from './components/ChannelHeader.vue';
 </script>
 
 <template>

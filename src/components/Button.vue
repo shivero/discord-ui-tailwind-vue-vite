@@ -1,15 +1,34 @@
 <script setup lang="ts">
-import { ref } from "vue";
-const count = ref(0);
+import { cva, type VariantProps } from "class-variance-authority";
+
+const button = cva(["button", "mt-8 inline-flex items-center justify-center"], {
+  variants: {
+    intent: {
+      primary: "rounded bg-discord-blue hover:bg-discord-blue-hover text-white",
+      secondary: "secondary",
+    },
+    size: {
+      small: "px-2 text-sm h-4",
+      medium: "px-4 text-sm h-9",
+    },
+  },
+  compoundVariants: [{ intent: "primary", size: "medium", class: "primaryMedium" }],
+});
+
+type ButtonProps = VariantProps<typeof button>;
+
+withDefaults(
+  defineProps<{ intent: ButtonProps["intent"]; size: ButtonProps["size"] }>(),
+  {
+    intent: "primary",
+    size: "medium",
+  },
+);
 </script>
 
 <template>
-  <button
-    class="h-10 rounded-sm bg-discord-dark-3 px-6 text-white hover:bg-discord-dark-2"
-    type="button"
-    @click="count++"
-  >
-    count is {{ count }}
+  <button type="button" :class="button({intent, size})">
+    <slot />
   </button>
 </template>
 <style></style>

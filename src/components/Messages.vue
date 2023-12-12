@@ -4,7 +4,7 @@ import type { Ref } from "vue";
 import User from "./User.vue";
 import Avatar from "./Avatar.vue";
 import { useChannelStore } from "@/store/channelStore";
-
+import ChannelHeader from "./ChannelHeader.vue";
 interface Message {
   user: string;
   type: string;
@@ -248,7 +248,7 @@ let infoMessages: Array<Message> = [
 ];
 let conversation: Ref<Array<Message>> = ref([]);
 channelStore.$subscribe((_, store) => {
-  if (store.channelName == "information") {
+  if (store.name == "information") {
     conversation.value = infoMessages;
   } else {
     conversation.value = messages;
@@ -259,9 +259,10 @@ const highlightStyle = "border-l-2 border-yellow-600 bg-yellow-600 bg-opacity-20
 </script>
 
 <template>
-  <div class="h-full bg-discord-dark pr-1">
-    <div class="scrollbar flex h-screen flex-col justify-start gap-6 overflow-y-scroll">
-      {{ channelStore.channelName }}
+  <div class="h-full pr-1">
+    <ChannelHeader />
+    <div
+      class="scrollbar flex h-screen flex-col justify-start gap-6 overflow-y-scroll bg-discord-dark">
       <div
         v-for="msg in conversation"
         :key="msg.message + msg.user"
