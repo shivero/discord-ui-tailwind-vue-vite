@@ -20,6 +20,31 @@ import PopoverBasic from "./Popover/PopoverBasic.vue";
 import Tooltip from "./Tooltip/Tooltip.vue";
 const channelStore = useChannelStore();
 import { localeEn } from "../translations/locale-en";
+import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
+import { ref } from "vue";
+import ArrowDown from "./Icons/ArrowDown.vue";
+import ArrowRight from "./Icons/ArrowRight.vue";
+
+const cb = () => {
+  console.log("test");
+};
+const muteMenuOpen = ref(false);
+
+const notificationMenuItems = [
+  { name: "Use Category Default", subtext: "@only mentions", active: true },
+  { name: "All" },
+  { name: "Mentions" },
+  { name: "Nothing" },
+];
+const muteNotificationOptions = [
+  { name: "For 15 minutes" },
+  { name: "For 1 hour" },
+  { name: "For 3 hours" },
+  { name: "For 8 hours" },
+  { name: "For 24 hours" },
+  { name: "Until next week" },
+  { name: "Until I turn it back on" },
+];
 </script>
 
 <template>
@@ -45,12 +70,63 @@ import { localeEn } from "../translations/locale-en";
           <PopoverBasic title="Threads" :open="open" :size="2" />
         </PopoverPanel>
       </Popover>
-      <Tooltip
-        intent="primary"
-        size="medium"
-        :tooltipText="localeEn.ui_notiifcations.name">
-        <MdiBell class="inline-block fill-gray-400 text-2xl" />
-      </Tooltip>
+      <Menu class="relative" as="div">
+        <MenuButton>
+          <Tooltip
+            intent="primary"
+            size="medium"
+            :tooltipText="localeEn.ui_notiifcations.name">
+            <MdiBell class="inline-block fill-gray-400 text-2xl" />
+          </Tooltip>
+        </MenuButton>
+
+        <MenuItems
+          class="absolute right-0 top-10 flex w-min max-w-sm flex-col rounded-lg bg-zinc-900 px-2 py-2">
+          <MenuItem class="mb-1">
+            <span>
+              <Menu as="div" class="relative" v-slot="{ open }">
+                <MenuButton
+                  class="flex h-8 w-full items-center justify-between rounded-sm p-2 text-sm text-gray-400 hover:bg-discord-blue hover:text-white"
+                  :onmouseenter="() => (muteMenuOpen = true)">
+                  Mute Channel <ArrowRight class="translate-x-2 fill-gray-400 text-lg" />
+                </MenuButton>
+                <MenuItems
+                  static
+                  v-show="muteMenuOpen"
+                  class="absolute left-8 right-0 top-0 flex w-max max-w-xs -translate-y-2 translate-x-full flex-col rounded-lg bg-zinc-900 px-2 py-2">
+                  <MenuItem
+                    v-for="item in muteNotificationOptions"
+                    class="min-h-8 flex w-full flex-col rounded-sm p-2 text-sm text-gray-400 hover:cursor-pointer hover:bg-discord-blue hover:text-white"
+                    v-slot="{ active }">
+                    <div>
+                      <div>{{ item.name }}</div>
+                    </div>
+                  </MenuItem>
+                </MenuItems>
+              </Menu>
+            </span>
+          </MenuItem>
+          <div class="mx-1 my-1 border border-zinc-600"></div>
+          <MenuItem
+            v-for="item in notificationMenuItems"
+            class="group flex w-full rounded-sm p-2 text-sm leading-none text-gray-400 [min-height:9px] hover:cursor-pointer hover:bg-discord-blue hover:text-white"
+            v-slot="{ active }"
+            :onmouseenter="() => (muteMenuOpen = false)">
+            <div class="flex flex-nowrap items-center justify-between">
+              <div class="leading-tight">
+                <div class="whitespace-nowrap">{{ item.name }}</div>
+                <div class="font-bold">{{ item.subtext }}</div>
+              </div>
+              <div
+                class="ml-4 box-content flex h-3 w-3 items-center justify-center rounded-full border-2 border-gray-400 group-hover:border-white">
+                <div
+                  :class="item.active ? 'bg-discord-blue group-hover:bg-white' : ''"
+                  class="absolute m-auto rounded-full [height:8px] [width:8px]"></div>
+              </div>
+            </div>
+          </MenuItem>
+        </MenuItems>
+      </Menu>
       <Tooltip intent="primary" size="medium" :tooltipText="localeEn.ui_pinned.name">
         <MdiPin class="inline-block fill-gray-400 text-2xl" />
       </Tooltip>

@@ -9,7 +9,7 @@ export default {
 
   theme: {
     fontFamily:{
-      'sans': ['Nunito', ...defaultTheme.fontFamily.sans]
+      'sans': [...defaultTheme.fontFamily.sans]
     },
     extend: {
       colors: {
