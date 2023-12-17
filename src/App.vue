@@ -2,15 +2,14 @@
 import Sidebar from "./components/Sidebar.vue";
 import Messages from "./components/Messages.vue";
 import Channels from "./components/Channels.vue";
-import AppHeader from "./components/AppHeader.vue";
-import ChannelHeader from './components/ChannelHeader.vue';
+import ChannelHeader from "./components/ChannelHeader.vue";
 </script>
 
 <template>
-  <div class="h-screen bg-discord-dark-3">
-    <div class="relative h-full w-full">
-      <AppHeader />
-      <div class="grid h-full grid-cols-[auto_auto_1fr] overflow-hidden">
+  <div
+    class="discord-app relative h-full overflow-hidden bg-discord-dark-3">
+    <div class="relative h-full w-full overflow-hidden">
+      <div class="flex min-h-0 min-w-0 flex-auto overflow-hidden h-full">
         <Sidebar />
         <Channels />
         <Messages />

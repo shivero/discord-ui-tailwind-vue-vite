@@ -30,6 +30,8 @@ const cb = () => {
 };
 const muteMenuOpen = ref(false);
 
+const t: number = 1;
+
 const notificationMenuItems = [
   { name: "Use Category Default", subtext: "@only mentions", active: true },
   { name: "All" },
@@ -49,7 +51,7 @@ const muteNotificationOptions = [
 
 <template>
   <div
-    class="relative flex h-12 items-center justify-between rounded-tr-xl bg-discord-dark px-4 text-slate-200 shadow-slight-bottom">
+    class="relative flex h-12 flex-shrink-0 items-center justify-between rounded-tr-xl bg-discord-dark px-4 text-slate-200 shadow-slight-bottom">
     <div>
       <TextChannelIcon
         class="inline-block fill-gray-500"
