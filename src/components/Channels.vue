@@ -46,6 +46,9 @@ const channels: Array<IChannel> = [
   },
   { name: "self reflections", group: "fc voice", type: "voice", unread: false },
   { name: "bot-commands", group: "bots", type: "text", unread: false },
+  { name: "bot-commands", group: "bots", type: "text", unread: false },
+  { name: "bot-commands", group: "bots", type: "text", unread: false },
+  { name: "bot-commands", group: "bots", type: "text", unread: false },
 ];
 
 const channelStore = useChannelStore();
@@ -54,26 +57,34 @@ let groupedChannels = groupBy(channels, "group");
 </script>
 
 <template>
-  <div class="w-60 rounded-tl-xl bg-discord-dark-4">
-    <ServerHeader />
-    <div v-for="(group, index) in groupedChannels">
-      <Disclosure as="div" :default-open="groupsOpen" v-slot="{ open }">
-        <DisclosureButton
-          class="mt-4 flex h-6 w-full items-center px-1 text-left text-white">
-          <div class="flex items-center text-xs uppercase tracking-wide text-slate-400">
-            <ArrowDown
-              :size="16"
-              class="inline-flex fill-slate-400"
-              :class="!open && '-rotate-90'" />
-            <span> {{ index }}</span>
-          </div>
-        </DisclosureButton>
-        <DisclosurePanel class="flex flex-col gap-[2px] text-gray-500">
-          <div v-for="channel in group">
-            <Channel :channel="channel" @click="channelStore.setChannel({...channel})" />
-          </div>
-        </DisclosurePanel>
-      </Disclosure>
+  <div
+    class="flex min-h-0 w-60 flex-shrink-0 flex-grow-0 basis-auto flex-col overflow-hidden rounded-tl-xl bg-discord-dark-4">
+    <ServerHeader class="flex-shrink-0" />
+    <div class="scrollbar flex-shrink flex-grow overflow-y-auto">
+      <div v-for="(group, index) in groupedChannels">
+        <Disclosure as="div" :default-open="groupsOpen" v-slot="{ open }">
+          <DisclosureButton
+            class="mt-4 flex h-6 w-full items-center px-1 text-left text-white">
+            <div class="flex items-center text-xs uppercase tracking-wide text-slate-400">
+              <ArrowDown
+                :size="16"
+                class="inline-flex fill-slate-400"
+                :class="!open && '-rotate-90'" />
+              <span> {{ index }}</span>
+            </div>
+          </DisclosureButton>
+          <DisclosurePanel class="flex flex-col gap-[2px] text-gray-500">
+            <div v-for="channel in group">
+              <Channel
+                :channel="channel"
+                @click="channelStore.setChannel({ ...channel })" />
+            </div>
+          </DisclosurePanel>
+        </Disclosure>
+      </div>
+    </div>
+    <div class="flex h-12 w-full items-center bg-slate-900 px-4 text-white flex-shrink-0">
+      Anything
     </div>
   </div>
 </template>

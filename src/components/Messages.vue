@@ -259,10 +259,10 @@ const highlightStyle = "border-l-2 border-yellow-600 bg-yellow-600 bg-opacity-20
 </script>
 
 <template>
-  <div class="h-full pr-1">
+  <div class="flex grow flex-col">
     <ChannelHeader />
     <div
-      class="scrollbar flex h-screen flex-col justify-start gap-6 overflow-y-scroll bg-discord-dark">
+      class="scrollbar flex h-full flex-col justify-start gap-6 overflow-y-auto bg-discord-dark">
       <div
         v-for="msg in conversation"
         :key="msg.message + msg.user"
@@ -297,6 +297,9 @@ const highlightStyle = "border-l-2 border-yellow-600 bg-yellow-600 bg-opacity-20
           </div>
         </div>
       </div>
+    </div>
+    <div class="h-16 p-4 w-full flex-shrink-0 bg-discord-dark flex items-center">
+      <input :placeholder="'Message #' + channelStore.name" type="text" class="w-full bg-discord-input px-4 py-2 rounded-xl"/>
     </div>
   </div>
 </template>

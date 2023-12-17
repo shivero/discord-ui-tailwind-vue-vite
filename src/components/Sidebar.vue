@@ -21,8 +21,8 @@ const hoverIndicatorClass = `before:opacity-0 hover:before:opacity-100 before:co
 </script>
 
 <template>
-  <div class="flex w-24 bg-discord-dark-3">
-    <div class="flex flex-col items-center gap-4 py-4">
+  <div class="flex w-20 bg-discord-dark-3 h-full overflow-y-auto">
+    <div class="flex flex-col items-center gap-4 pt-4">
       <div
         v-for="(image, index) in imagesList"
         :class="[
@@ -31,9 +31,9 @@ const hoverIndicatorClass = `before:opacity-0 hover:before:opacity-100 before:co
         ]"
         class="before:transition-property-transform before:transition-property-opacity relative before:duration-300"
         @click="setActiveImage(index)">
-        <div class="px-4">
+        <div class="px-3">
           <img
-            class="duration-50 h-[64px] w-[64px] rounded-2xl outline-lime-200 duration-300 hover:rounded-3xl"
+            class="duration-50 h-[56px] w-[56px] rounded-2xl outline-lime-200 duration-300 hover:rounded-3xl"
             :class="image.active ? '' : 'rounded-5xl'"
             :src="image.url"
             alt="" />
