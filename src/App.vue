@@ -9,13 +9,11 @@ import ChannelHeader from "./components/ChannelHeader.vue";
   <div
     class="discord-app relative h-full overflow-hidden bg-discord-dark-3">
     <div class="relative h-full w-full overflow-hidden">
-      <div class="flex min-h-0 min-w-0 flex-auto overflow-hidden h-full">
+      <div class="flex min-h-0 min-w-0 flex-auto overflow-hidden h-full bg-discord-dark">
         <Sidebar />
         <Channels />
         <Messages />
       </div>
-      <!-- <HelloWorld msg="Vite + Vue" /> -->
-      <!-- <Button /> -->
     </div>
   </div>
 </template>

@@ -5,6 +5,7 @@ import User from "./User.vue";
 import Avatar from "./Avatar.vue";
 import { useChannelStore } from "@/store/channelStore";
 import ChannelHeader from "./ChannelHeader.vue";
+import MemberList from "./MemberList.vue";
 interface Message {
   user: string;
   type: string;
@@ -261,45 +262,55 @@ const highlightStyle = "border-l-2 border-yellow-600 bg-yellow-600 bg-opacity-20
 <template>
   <div class="flex grow flex-col">
     <ChannelHeader />
-    <div
-      class="scrollbar flex h-full flex-col justify-start gap-6 overflow-y-auto bg-discord-dark">
-      <div
-        v-for="msg in conversation"
-        :key="msg.message + msg.user"
-        :data-type="msg.type"
-        :class="msg.type === 'reply' ? highlightStyle : 'hover:bg-discord-dark-2'">
-        <div v-if="msg.replyTo" class="relative flex items-center gap-2 px-20">
+    <div class="flex grow overflow-hidden">
+      <div class="relative h-full flex-grow">
+        <div
+          class="scrollbar relative flex h-full flex-col justify-start gap-6 mr-2 overflow-y-auto">
           <div
-            class="absolute h-2 w-10 -translate-x-full translate-y-0.5 border-l-2 border-t-2 border-slate-500"></div>
-          <Avatar :size="4" />
-          <User :username="msg.replyTo.user" />
-          <div
-            class="w-80 overflow-x-hidden overflow-y-clip overflow-ellipsis whitespace-nowrap text-slate-400">
-            {{ msg.replyTo.message }}
-          </div>
-        </div>
-        <div class="flex gap-4 px-4 py-2">
-          <Avatar :size="11" />
-          <div class="message text-slate-300">
-            <User
-              :username="msg.user"
-              :timestamp="msg.timestamp"
-              :isreply="msg.type === ''" />
-            {{ msg.message }}
-            <div
-              v-if="msg.image"
-              class="mt-2 box-border max-h-72 max-w-md justify-center overflow-hidden rounded-lg">
-              <img
-                :src="msg.image_url"
-                class="max-h-72 max-w-md object-contain"
-                :alt="msg.image_url" />
+            v-for="msg in conversation"
+            :key="msg.message + msg.user"
+            :data-type="msg.type"
+            :class="msg.type === 'reply' ? highlightStyle : 'hover:bg-discord-dark-2'">
+            <div v-if="msg.replyTo" class="relative flex items-center gap-2 px-20">
+              <div
+                class="absolute h-2 w-10 -translate-x-full translate-y-0.5 border-l-2 border-t-2 border-slate-500"></div>
+              <Avatar :size="4" />
+              <User :username="msg.replyTo.user" />
+              <div
+                class="w-80 overflow-x-hidden overflow-y-clip overflow-ellipsis whitespace-nowrap text-slate-400">
+                {{ msg.replyTo.message }}
+              </div>
+            </div>
+            <div class="flex gap-4 px-4 py-2">
+              <Avatar :size="11" />
+              <div class="message text-slate-300">
+                <User
+                  :username="msg.user"
+                  :timestamp="msg.timestamp"
+                  :isreply="msg.type === ''" />
+                {{ msg.message }}
+                <div
+                  v-if="msg.image"
+                  class="mt-2 box-border max-h-72 max-w-md justify-center overflow-hidden rounded-lg">
+                  <img
+                    :src="msg.image_url"
+                    class="max-h-72 max-w-md object-contain"
+                    :alt="msg.image_url" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <div
+          v-if="conversation.length"
+          class="absolute bottom-0 flex h-16 w-full flex-shrink-0 items-center bg-discord-dark p-4">
+          <input
+            :placeholder="'Message #' + channelStore.name"
+            type="text"
+            class="w-full rounded-xl bg-discord-input px-4 py-2" />
+        </div>
       </div>
-    </div>
-    <div class="h-16 p-4 w-full flex-shrink-0 bg-discord-dark flex items-center">
-      <input :placeholder="'Message #' + channelStore.name" type="text" class="w-full bg-discord-input px-4 py-2 rounded-xl"/>
+      <MemberList />
     </div>
   </div>
 </template>

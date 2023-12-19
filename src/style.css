@@ -10,18 +10,21 @@
         transform: translateX(-20px);
     }
 
+    .scrollbar-small::-webkit-scrollbar {
+        width: 4px;
+        height: 20px;
+        padding-right: 4rem;
+        transform: translateX(-20px);
+    }
+
     .scrollbar::-webkit-scrollbar-track {
         border-radius: 100vh;
-        background: hsl(220, 13%, 28%);
+        /* background: #3e4451; */
+        background-color: #2b2d31;
     }
 
     .scrollbar::-webkit-scrollbar-thumb {
-        background: hsl(220, 13%, 14%);
+        background: #1f2228;
         border-radius: 100vh;
-        /* border: 3px solid var(--tw-discord-dark-2); */
-    }
-
-    .scrollbar::-webkit-scrollbar-thumb:hover {
-        background: #c0a0b9;
     }
 }

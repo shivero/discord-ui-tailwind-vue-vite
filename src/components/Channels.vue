@@ -2,7 +2,7 @@
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { groupBy } from "../utils/groupBy";
 import { useChannelStore } from "@/store/channelStore";
-import { IChannel } from "./IChannel";
+import { IChannel } from "../data/IChannel";
 import Channel from "@/components/Channel.vue";
 import ArrowDown from "./Icons/ArrowDown.vue";
 import ServerHeader from "./Serverheader.vue";
@@ -60,7 +60,7 @@ let groupedChannels = groupBy(channels, "group");
   <div
     class="flex min-h-0 w-60 flex-shrink-0 flex-grow-0 basis-auto flex-col overflow-hidden rounded-tl-xl bg-discord-dark-4">
     <ServerHeader class="flex-shrink-0" />
-    <div class="scrollbar flex-shrink flex-grow overflow-y-auto">
+    <div class="scrollbar scrollbar-small flex-shrink flex-grow overflow-y-auto">
       <div v-for="(group, index) in groupedChannels">
         <Disclosure as="div" :default-open="groupsOpen" v-slot="{ open }">
           <DisclosureButton
@@ -83,7 +83,7 @@ let groupedChannels = groupBy(channels, "group");
         </Disclosure>
       </div>
     </div>
-    <div class="flex h-12 w-full items-center bg-slate-900 px-4 text-white flex-shrink-0">
+    <div class="flex h-12 w-full flex-shrink-0 items-center bg-slate-900 px-4 text-white">
       Anything
     </div>
   </div>

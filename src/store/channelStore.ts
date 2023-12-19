@@ -1,4 +1,4 @@
-import { IChannel } from '@/components/IChannel';
+import { IChannel } from '@/data/IChannel';
 import { defineStore } from "pinia";
 export const useChannelStore = defineStore('channel', {
     state: ():IChannel => ({ name: '', type: '',  group: '', unread: false }),
