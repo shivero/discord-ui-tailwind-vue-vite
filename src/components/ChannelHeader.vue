@@ -24,10 +24,10 @@ import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
 import { ref } from "vue";
 import ArrowDown from "./Icons/ArrowDown.vue";
 import ArrowRight from "./Icons/ArrowRight.vue";
+import { useMemberPanelStore } from "@/store/memberPanelStore";
 
-const cb = () => {
-  console.log("test");
-};
+const memberPanelStore = useMemberPanelStore();
+
 const muteMenuOpen = ref(false);
 
 const t: number = 1;
@@ -133,7 +133,7 @@ const muteNotificationOptions = [
         <MdiPin class="inline-block fill-gray-400 text-2xl" />
       </Tooltip>
       <Tooltip intent="primary" size="medium" :tooltipText="localeEn.ui_members.name">
-        <MdiAccountMultiple class="inline-block fill-gray-400 text-2xl" />
+        <MdiAccountMultiple class="inline-block fill-gray-400 text-2xl cursor-pointer" @click="memberPanelStore.toggleMemberPanel" />
       </Tooltip>
       <div class="flex items-center">
         <input

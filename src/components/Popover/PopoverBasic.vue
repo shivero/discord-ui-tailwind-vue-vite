@@ -14,7 +14,9 @@ import Button from "../Button.vue";
     <div
       class="flex h-12 items-center justify-between rounded-t-lg bg-discord-dark-3 px-4">
       Threads
-      <PopoverButton><MdiClose class="text-xl" /></PopoverButton>
+      <PopoverButton>
+        <MdiClose class="text-xl" />
+      </PopoverButton>
     </div>
     <div class="rounded-b-lg border border-zinc-800 bg-discord-dark px-4">
       <div class="py-10 text-center">

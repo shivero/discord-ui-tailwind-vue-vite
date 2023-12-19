@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { IChannel } from "./IChannel";
+import { IChannel } from "@/data/IChannel";
 import VolumeChannelIcon from "./Icons/VolumeChannelIcon.vue";
 import TextChannelIcon from "./Icons/TextChannelIcon.vue";
 const props = defineProps<{ channel: IChannel }>();
