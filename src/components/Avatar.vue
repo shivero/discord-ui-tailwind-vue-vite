@@ -1,24 +1,12 @@
 <script setup lang="ts">
 const props = defineProps({ size: Number });
-let hSize = `h-${props.size}`;
-let wSize = `w-${props.size}`;
-let sizeClass = `${hSize} ${wSize}`;
-switch (props.size) {
-  case 4:
-    sizeClass = "h-4 w-4";
-    break;
-  case 11:
-    sizeClass = "h-11 w-11";
-    break;
-  default:
-    break;
-}
+
+const randomAvatarId = Math.floor(Math.random() * 5) + 1;
 </script>
 
 <template>
   <div
-    :class="sizeClass"
-    class="ml-1 shrink-0 rounded-full border-2 border-transparent bg-gray-600">
-    <!-- <img src="" /> -->
+    class="shrink-0 rounded-full overflow-hidden bg-gray-600">
+      <img :src="`src/assets/avatars/toon_${randomAvatarId}.png`" alt="" />
   </div>
 </template>

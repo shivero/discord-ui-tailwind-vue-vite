@@ -265,7 +265,7 @@ const highlightStyle = "border-l-2 border-yellow-600 bg-yellow-600 bg-opacity-20
     <div class="flex grow overflow-hidden">
       <div class="relative h-full flex-grow">
         <div
-          class="scrollbar relative flex h-full flex-col justify-start gap-6 mr-2 overflow-y-auto">
+          class="scrollbar relative mr-2 flex h-full flex-col justify-start gap-6 overflow-y-auto">
           <div
             v-for="msg in conversation"
             :key="msg.message + msg.user"
@@ -274,7 +274,7 @@ const highlightStyle = "border-l-2 border-yellow-600 bg-yellow-600 bg-opacity-20
             <div v-if="msg.replyTo" class="relative flex items-center gap-2 px-20">
               <div
                 class="absolute h-2 w-10 -translate-x-full translate-y-0.5 border-l-2 border-t-2 border-slate-500"></div>
-              <Avatar :size="4" />
+              <Avatar class="ml-1 h-4 w-4" />
               <User :username="msg.replyTo.user" />
               <div
                 class="w-80 overflow-x-hidden overflow-y-clip overflow-ellipsis whitespace-nowrap text-slate-400">
@@ -282,7 +282,7 @@ const highlightStyle = "border-l-2 border-yellow-600 bg-yellow-600 bg-opacity-20
               </div>
             </div>
             <div class="flex gap-4 px-4 py-2">
-              <Avatar :size="11" />
+              <Avatar class="h-11 w-11" />
               <div class="message text-slate-300">
                 <User
                   :username="msg.user"
