@@ -5,7 +5,7 @@ let isClicked = ref(false);
 const tooltip = cva(
   [
     "absolute left-1/2 top-8 w-max max-w-xs -translate-x-1/2",
-    "invisible rounded-lg opacity-0 transition-opacity group-hover:visible group-hover:flex group-hover:opacity-100 group-focus:hidden select-none",
+    "invisible select-none rounded-lg opacity-0 transition-opacity group-hover:visible group-hover:flex group-hover:opacity-100 group-focus:hidden",
   ],
   {
     variants: {
@@ -46,7 +46,7 @@ const onSlotClick = () => {
 
 <template>
   <span class="group relative">
-    <span @click="onSlotClick" @mouseleave="isClicked = false">
+    <span class="flex items-center justify-center" @click="onSlotClick" @mouseleave="isClicked = false">
       <slot />
     </span>
     <span :class="[tooltip({ intent, size }), isClicked ? 'group-hover:invisible' : '']">

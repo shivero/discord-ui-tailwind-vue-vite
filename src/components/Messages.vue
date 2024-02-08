@@ -65,8 +65,7 @@ let messages: Array<Message> = [
     user: "User4",
     type: "",
     timestamp: "2023-11-21T12:25:00Z",
-    message:
-      "Personally, I find the wireless feature of the Oculus Quest 2 a game-changer.",
+    message: "Personally, I find the wireless feature of the Oculus Quest 2 a game-changer.",
   },
   {
     user: "User1",
@@ -86,8 +85,7 @@ let messages: Array<Message> = [
     user: "User3",
     type: "",
     timestamp: "2023-11-21T14:05:00Z",
-    message:
-      "Consider the Pimax 8KX for its unparalleled resolution if you're a graphics enthusiast.",
+    message: "Consider the Pimax 8KX for its unparalleled resolution if you're a graphics enthusiast.",
   },
   {
     user: "User4",
@@ -105,8 +103,7 @@ let messages: Array<Message> = [
     user: "User2",
     type: "",
     timestamp: "2023-11-21T15:05:00Z",
-    message:
-      "Rumors about haptic feedback suits for full-body immersion are circulating.",
+    message: "Rumors about haptic feedback suits for full-body immersion are circulating.",
   },
   {
     user: "User3",
@@ -115,12 +112,10 @@ let messages: Array<Message> = [
       user: "User2",
       type: "",
       timestamp: "2023-11-21T15:05:00Z",
-      message:
-        "Rumors about haptic feedback suits for full-body immersion are circulating.",
+      message: "Rumors about haptic feedback suits for full-body immersion are circulating.",
     },
     timestamp: "2023-11-21T15:25:00Z",
-    message:
-      "I've heard about neural interfaces in development for more direct interaction.",
+    message: "I've heard about neural interfaces in development for more direct interaction.",
   },
   {
     user: "User4",
@@ -144,15 +139,13 @@ let messages: Array<Message> = [
     user: "User3",
     type: "",
     timestamp: "2023-11-21T15:31:00Z",
-    message:
-      "Agreed. The convergence of tech and gaming is opening up incredible possibilities.",
+    message: "Agreed. The convergence of tech and gaming is opening up incredible possibilities.",
   },
   {
     user: "User4",
     type: "",
     timestamp: "2023-11-21T15:33:00Z",
-    message:
-      "And it's not just gaming; VR is making waves in education and healthcare too.",
+    message: "And it's not just gaming; VR is making waves in education and healthcare too.",
   },
   {
     user: "User1",
@@ -264,50 +257,30 @@ const highlightStyle = "border-l-2 border-yellow-600 bg-yellow-600 bg-opacity-20
     <ChannelHeader />
     <div class="flex grow overflow-hidden">
       <div class="relative h-full flex-grow">
-        <div
-          class="scrollbar relative mr-2 flex h-full flex-col justify-start gap-6 overflow-y-auto">
-          <div
-            v-for="msg in conversation"
-            :key="msg.message + msg.user"
-            :data-type="msg.type"
-            :class="msg.type === 'reply' ? highlightStyle : 'hover:bg-discord-dark-2'">
+        <div class="scrollbar relative mr-2 flex h-full flex-col justify-start gap-6 overflow-y-auto">
+          <div v-for="msg in conversation" :key="msg.message + msg.user" :data-type="msg.type" :class="msg.type === 'reply' ? highlightStyle : 'hover:bg-discord-dark-2'">
             <div v-if="msg.replyTo" class="relative flex items-center gap-2 px-20">
-              <div
-                class="absolute h-2 w-10 -translate-x-full translate-y-0.5 border-l-2 border-t-2 border-slate-500"></div>
+              <div class="absolute h-2 w-10 -translate-x-full translate-y-0.5 border-l-2 border-t-2 border-slate-500"></div>
               <Avatar class="ml-1 h-4 w-4" />
               <User :username="msg.replyTo.user" />
-              <div
-                class="w-80 overflow-x-hidden overflow-y-clip overflow-ellipsis whitespace-nowrap text-slate-400">
+              <div class="w-80 overflow-x-hidden overflow-y-clip overflow-ellipsis whitespace-nowrap text-slate-400">
                 {{ msg.replyTo.message }}
               </div>
             </div>
             <div class="flex gap-4 px-4 py-2">
               <Avatar class="h-11 w-11" />
               <div class="message text-slate-300">
-                <User
-                  :username="msg.user"
-                  :timestamp="msg.timestamp"
-                  :isreply="msg.type === ''" />
+                <User :username="msg.user" :timestamp="msg.timestamp" :isreply="msg.type === ''" />
                 {{ msg.message }}
-                <div
-                  v-if="msg.image"
-                  class="mt-2 box-border max-h-72 max-w-md justify-center overflow-hidden rounded-lg">
-                  <img
-                    :src="msg.image_url"
-                    class="max-h-72 max-w-md object-contain"
-                    :alt="msg.image_url" />
+                <div v-if="msg.image" class="mt-2 box-border max-h-72 max-w-md justify-center overflow-hidden rounded-lg">
+                  <img :src="msg.image_url" class="max-h-72 max-w-md object-contain" :alt="msg.image_url" />
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div
-          v-if="conversation.length"
-          class="absolute bottom-0 flex h-16 w-full flex-shrink-0 items-center bg-discord-dark p-4">
-          <input
-            :placeholder="'Message #' + channelStore.name"
-            type="text"
-            class="w-full rounded-xl bg-discord-input px-4 py-2" />
+        <div v-if="conversation.length" class="absolute bottom-0 flex h-16 w-full flex-shrink-0 items-center bg-discord-dark p-4">
+          <input :placeholder="'Message #' + channelStore.name" type="text" class="w-full rounded-xl bg-discord-input px-4 py-2" />
         </div>
       </div>
       <MemberList />

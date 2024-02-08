@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const defaultTheme = require("tailwindcss/defaultTheme");
-
+import { addDynamicIconSelectors } from "@iconify/tailwind";
 export default {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
 
@@ -10,7 +10,7 @@ export default {
     },
     extend: {
       colors: {
-        'discord-input': '#383a40',
+        "discord-input": "#383a40",
         "discord-dark": "#313338",
         "discord-dark-2": "#2F3136",
         "discord-dark-3": "#202225",
@@ -26,13 +26,9 @@ export default {
         "slight-bottom": "0 1px 0 0 rgba(0,0,0,0.24)",
       },
       gridTemplateAreas: {
-        "discord-layout": [
-          "logo logo logo",
-          "serverlist channellist messages"
-        ]  
+        "discord-layout": ["logo logo logo", "serverlist channellist messages"],
       },
-      
     },
   },
-  plugins: [],
+  plugins: [addDynamicIconSelectors()],
 };

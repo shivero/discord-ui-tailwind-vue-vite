@@ -1,8 +1,12 @@
 {
-  "printWidth": 90,
+  "printWidth": 240,
   "bracketSameLine": true,
   "plugins": [
     "prettier-plugin-tailwindcss"
   ],
-  "tailwindFunctions": ["tw", "cva", "clsx"]
+  "tailwindFunctions": [
+    "tw",
+    "cva",
+    "clsx"
+  ]
 }

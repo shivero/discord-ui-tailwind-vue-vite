@@ -3,7 +3,7 @@ export const localeEn = {
         name: "Threads",
         tooltipText: "The Transition component takes Vue's built-in transition element one step further by letting you coordinate nested child transitions from a single root component."
     },
-    ui_notiifcations: {
+    ui_notifcations: {
         name: "Notification settings",
         tooltipText: ""
     },

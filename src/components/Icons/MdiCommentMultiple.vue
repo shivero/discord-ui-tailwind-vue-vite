@@ -1,21 +1,9 @@
 <template>
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    height="1em"
-    width="1em"
-    :viewBox="viewBox">
-    <path
-      fill="inherit"
-      d="M12 23a1 1 0 0 1-1-1v-3H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.1l-3.7 3.71c-.2.18-.44.29-.7.29H12m-9-8H1V3a2 2 0 0 1 2-2h16v2H3v12Z"></path>
-  </svg>
+  <span class="icon-[mdi--comment-multiple] align-[auto]" :class="props.classes"></span>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-
 const props = defineProps({
-  size: { type: Number, default: 24 },
+  classes: { type: String, default: "" },
 });
-
-const viewBox = computed(() => `0 0 ${props.size} ${props.size}`);
 </script>
