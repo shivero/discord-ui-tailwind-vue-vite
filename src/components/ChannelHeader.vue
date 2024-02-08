@@ -61,7 +61,7 @@ const muteNotificationOptions = [
         v-else-if="channelStore.type === 'voice'" />
       <span class="ml-2 font-bold">{{ channelStore.name }}</span>
     </div>
-    <div class="flex flex-row items-center gap-4  outline-dashed outline-1">
+    <div class="flex flex-row items-center gap-4">
       <Popover v-slot="{ open }" class="relative">
         <PopoverButton class="flex items-center">
           <Tooltip intent="primary" size="medium" :tooltipText="localeEn.ui_threads.name">
