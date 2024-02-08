@@ -52,7 +52,7 @@ const muteNotificationOptions = [
 <template>
   <div
     class="relative flex h-12 flex-shrink-0 items-center justify-between rounded-tr-xl bg-discord-dark px-4 text-slate-200 shadow-slight-bottom">
-    <div>
+    <div class="flex items-center flex-nowrap">
       <TextChannelIcon
         class="inline-block fill-gray-500"
         v-if="channelStore.type === 'text'" />
@@ -61,11 +61,11 @@ const muteNotificationOptions = [
         v-else-if="channelStore.type === 'voice'" />
       <span class="ml-2 font-bold">{{ channelStore.name }}</span>
     </div>
-    <div class="flex flex-row items-center gap-4">
+    <div class="flex flex-row items-center gap-4  outline-dashed outline-1">
       <Popover v-slot="{ open }" class="relative">
-        <PopoverButton>
+        <PopoverButton class="flex items-center">
           <Tooltip intent="primary" size="medium" :tooltipText="localeEn.ui_threads.name">
-            <MdiCommentMultiple class="inline-block fill-gray-400 text-2xl" />
+            <MdiCommentMultiple class="inline-block text-gray-400 text-2xl" />
           </Tooltip>
         </PopoverButton>
         <PopoverPanel class="absolute right-0 top-8 z-10 w-80 rounded-lg">
@@ -77,8 +77,8 @@ const muteNotificationOptions = [
           <Tooltip
             intent="primary"
             size="medium"
-            :tooltipText="localeEn.ui_notiifcations.name">
-            <MdiBell class="inline-block fill-gray-400 text-2xl" />
+            :tooltipText="localeEn.ui_notifcations.name">
+            <MdiBell class="inline-block text-gray-400 text-2xl" />
           </Tooltip>
         </MenuButton>
 
@@ -90,7 +90,7 @@ const muteNotificationOptions = [
                 <MenuButton
                   class="flex h-8 w-full items-center justify-between rounded-sm p-2 text-sm text-gray-400 hover:bg-discord-blue hover:text-white"
                   :onmouseenter="() => (muteMenuOpen = true)">
-                  Mute Channel <ArrowRight class="translate-x-2 fill-gray-400 text-lg" />
+                  Mute Channel <ArrowRight class="translate-x-2 text-gray-400 text-lg" />
                 </MenuButton>
                 <MenuItems
                   static
@@ -130,10 +130,10 @@ const muteNotificationOptions = [
         </MenuItems>
       </Menu>
       <Tooltip intent="primary" size="medium" :tooltipText="localeEn.ui_pinned.name">
-        <MdiPin class="inline-block fill-gray-400 text-2xl" />
+        <MdiPin class="inline-block text-gray-400 text-2xl" />
       </Tooltip>
       <Tooltip intent="primary" size="medium" :tooltipText="localeEn.ui_members.name">
-        <MdiAccountMultiple class="inline-block fill-gray-400 text-2xl cursor-pointer" @click="memberPanelStore.toggleMemberPanel" />
+        <MdiAccountMultiple class="inline-block text-gray-400 text-2xl cursor-pointer" @click="memberPanelStore.toggleMemberPanel" />
       </Tooltip>
       <div class="flex items-center">
         <input
@@ -142,14 +142,14 @@ const muteNotificationOptions = [
           placeholder="Search" />
         <div
           class="inline-flex h-6 -translate-x-5 items-center rounded-r-sm bg-discord-dark-3">
-          <MdiMagnify class="shrink-0 fill-gray-400 text-base" />
+          <MdiMagnify class="shrink-0 text-gray-400 text-base" />
         </div>
         <div class="flex flex-row gap-4">
           <Tooltip intent="primary" size="medium" :tooltipText="localeEn.ui_inbox.name">
-            <MdiInbox class="inline-block shrink-0 fill-gray-400 text-2xl" />
+            <MdiInbox class="inline-block shrink-0 text-gray-400 text-2xl" />
           </Tooltip>
           <Tooltip intent="primary" size="medium" :tooltipText="localeEn.ui_help.name">
-            <MdiHelpCircle class="inline-block shrink-0 fill-gray-400 text-2xl" />
+            <MdiHelpCircle class="inline-block shrink-0 text-gray-400 text-2xl" />
           </Tooltip>
         </div>
       </div>

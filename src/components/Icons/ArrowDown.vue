@@ -1,13 +1,9 @@
-<script setup lang="ts">
-</script>
-
 <template>
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    height="1em"
-    width="1em"
-    viewBox="0 -960 960 960"
-  >
-    <path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z" />
-  </svg>
+  <span class="icon-[mdi--chevron-down]" :class="props.classes"></span>
 </template>
+
+<script setup lang="ts">
+const props = defineProps({
+  classes: { type: String, default: "" },
+});
+</script>

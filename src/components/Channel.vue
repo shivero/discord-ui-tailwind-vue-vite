@@ -2,7 +2,7 @@
   <div :class="unreadClass" class="">
     <div
       :class="isActive"
-      class="mx-2 flex h-8 items-center gap-2 rounded-sm px-2 opacity-100 hover:cursor-pointer ">
+      class="mx-2 flex h-8 items-center gap-2 rounded-md px-2 opacity-100 hover:cursor-pointer ">
       <div v-if="props.channel.type == 'voice'">
         <div><VolumeChannelIcon class="fill-gray-500" /></div>
       </div>
