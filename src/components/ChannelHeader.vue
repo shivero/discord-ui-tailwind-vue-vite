@@ -83,7 +83,7 @@ const muteNotificationOptions = [
         </MenuButton>
 
         <MenuItems
-          class="absolute right-0 top-10 flex w-min max-w-sm flex-col rounded-lg bg-zinc-900 px-2 py-2">
+          class="absolute z-10 right-0 top-10 flex w-min max-w-sm flex-col rounded-lg bg-zinc-900 px-2 py-2">
           <MenuItem class="mb-1">
             <span>
               <Menu as="div" class="relative" v-slot="{ open }">
