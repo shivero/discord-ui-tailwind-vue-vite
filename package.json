@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "build-gh-pages": "vue-tsc && vite build --base='/discord-ui-tailwind-vue-vite/'",
     "preview": "vite preview"
   },
   "dependencies": {
